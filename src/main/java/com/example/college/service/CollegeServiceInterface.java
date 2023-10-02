@@ -10,7 +10,7 @@ public interface CollegeServiceInterface
 	
 	CollegeEntity getDetailsById(int id);
 	
-	String saveItems(CollegeEntity c);
+	CollegeEntity saveItems(CollegeEntity c);
 	
 	String update(int id,CollegeEntity centity);
 	

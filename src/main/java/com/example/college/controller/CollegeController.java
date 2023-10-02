@@ -31,6 +31,7 @@ public class CollegeController
 		return  "College Management System KONGU ENGINEERING COLLEGE";
 	}
 	
+	
 	@GetMapping(value="/getDetails")
 	public List<CollegeEntity> getList()
 	{
@@ -65,11 +66,18 @@ public class CollegeController
 	
 	
 	@PostMapping(value="/insert")
-	public String insert(@RequestBody CollegeEntity ce)
+	public String insert(@RequestBody CollegeEntity c)
 	{
+
 		try
 		{
-		   cs.saveItems(ce)	;
+			if(c.getEmail()==null || c.getEmail().isEmpty())
+				return "Email can not be Empty !";
+			else if( c.getRating()<=0 || c.getAvgSalary() <=0 || c.getFacultyCount()<=0)
+				  return "Data can not be String or Zero";
+			else if(c.getName()==null || c.getName().isEmpty())
+				return "Department Name should not be Empty !";
+		   cs.saveItems(c)	;
 		}
 		catch(Exception e)
 		{

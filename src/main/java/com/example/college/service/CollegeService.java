@@ -55,25 +55,18 @@ public class CollegeService  implements CollegeServiceInterface
 
 
 	
-	public String saveItems(CollegeEntity c)
+	public CollegeEntity saveItems(CollegeEntity c)
 	{
 		CollegeEntity cnew=new CollegeEntity();
 		try
 		{
-			if(c.getEmail()==null || c.getEmail().isEmpty())
-				return "Email can not be Empty !";
-			else if( c.getRating()>0 || c.getAvgSalary() >0 || c.getFacultyCount()>0)
-				  return "Data can not be String or Zero";
-			else if(c.getName()==null || c.getName().isEmpty())
-				return "Department Name should not be Empty !";
-			
 			cnew=repo.save(c);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		return "Data inserted Successfully";
+		return cnew;
 	}
 	
 	
