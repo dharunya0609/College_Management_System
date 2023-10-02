@@ -36,12 +36,19 @@ public class CollegeService  implements CollegeServiceInterface
 	{
 		CollegeEntity cnew=new CollegeEntity();
 		
+		Optional<Integer> cid=Optional.of(id);
+		id=cid.get();
 		
 		if(id>0)
 		{
 			try
 			{
 				cnew=repo.findById(id).get();
+				Optional<CollegeEntity> check=Optional.ofNullable(cnew);
+				if(check!=null && check.isPresent())
+				{
+					cnew=check.get();
+				}
 			}
 			catch(Exception e)
 			{
